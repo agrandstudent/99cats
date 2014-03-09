@@ -1,0 +1,22 @@
+<%= render :partial => "layouts/errors" %>
+
+<table>
+  <tr>
+    <td><b>Cat</b></td>
+    <td><b>Start Date</b></td>
+    <td><b>End Date</b></td>
+    <td><b>Status</b></td>
+    <td><b>Approve</b></td>
+    <td><b>Deny</b></td>
+  </tr>
+  <% @rentalrequests.each do |request|%>
+  <tr>
+    <td><%= request.cat_id %></td>
+    <td><%= request.start_date %></td>
+    <td><%= request.end_date %></td>
+    <td><%= request.status %></td>
+    <td><%= button_to "Approve", approve_cat_rental_request_url(request), :method => :patch %></td>
+    <td><%= button_to "Deny", deny_cat_rental_request_url(request), :method => :patch %></td>
+    </tr>
+  <% end %>
+</table>

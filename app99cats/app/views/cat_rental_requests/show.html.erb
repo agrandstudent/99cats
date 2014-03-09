@@ -1,0 +1,15 @@
+<h1><%= @catrental.cat_id %></h1>
+
+<table>
+  <tr>
+    <td><b>Start Date</b></td>
+    <td><b>End Date</b></td>
+  </tr>
+  <tr>
+    <td><%= @catrental.start_date %></td>
+    <td><%= @catrental.end_date%></td>
+  </tr>
+</table>
+
+<%#= link_to "fix", edit_cat_url %>
+<%= link_to "Back to cats", cats_url %>

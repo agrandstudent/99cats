@@ -1,0 +1,50 @@
+<% if @cat.persisted? %>
+  <form action="<%= cat_url %>" method="post" accept-charset="utf-8">
+  <input type="hidden" name="_method" value="PATCH">
+<%else%>
+  <form action="<%= cats_url %>" method="post" accept-charset="utf-8">
+<% end %>
+  <label for="cat_name">Cat name</label>
+  <input type="text" name="cat[name]" id="cat_name" value="<%= @cat.name %>">
+  <br>
+  <label for="age">Age</label>
+  <input type="text" name="cat[age]" id="age" value="<%= @cat.age %>">
+  <br>
+  <%if @cat.sex == "M" %>
+    <label for="cat_sex_female">Female</label>
+    <input type="radio" name="cat[sex]" id="cat_sex_female" value="F">
+    <br>
+    <label for="cat_sex_male">Male</label>
+    <input type="radio" name="cat[sex]" id="cat_sex_male" value="M" checked = "checked">
+  <%elsif @cat.sex == "F" %>
+    <label for="cat_sex_female">Female</label>
+    <input type="radio" name="cat[sex]" id="cat_sex_female" value="F" checked = "checked">
+    <br>
+    <label for="cat_sex_male">Male</label>
+    <input type="radio" name="cat[sex]" id="cat_sex_male" value="M">
+  <%else %>
+    <label for="cat_sex_female">Female</label>
+    <input type="radio" name="cat[sex]" id="cat_sex_female" value="F" >
+    <br>
+    <label for="cat_sex_male">Male</label>
+    <input type="radio" name="cat[sex]" id="cat_sex_male" value="M">
+  <%end%>
+  <br>
+  <label for="cat_coat_color">Coat color</label>
+  <select name="cat[color]" id="cat_coat_color">
+    <option value="<%= @cat.color %>"><%= @cat.color %></option>
+    <option value="Brown">Brown</option>
+    <option value="Gold">Gold</option>
+    <option value="Black">Black</option>
+    <option value="White">White</option>
+    <option value="Calico">Calico</option>
+  </select>
+  <br>
+  <label for="birth_date">Birth date</label>
+  <input type="date" name="cat[birth_date]" id="birth_date" value="<%= @cat.birth_date %>">
+  <br>
+
+  <%#= button_to("Update cat", cat_url(@cat), :method => :patch) %>
+
+  <p><input type="submit" value="Submit Cat"></p>
+</form>
